@@ -33,13 +33,13 @@
 
 		levels: 2,
 
-		expandIcon: 'glyphicon glyphicon-plus',
-		collapseIcon: 'glyphicon glyphicon-minus',
-		emptyIcon: 'glyphicon',
+		expandIcon: 'fa fa-plus-square-o',
+		collapseIcon: 'fa fa-minus-square-o',
+		emptyIcon: '',
 		nodeIcon: '',
 		selectedIcon: '',
-		checkedIcon: 'glyphicon glyphicon-check',
-		uncheckedIcon: 'glyphicon glyphicon-unchecked',
+		checkedIcon: 'fa-check-square-o',
+		uncheckedIcon: 'fa fa-square-o',
 
 		color: undefined, // '#000000',
 		backColor: undefined, // '#FFFFFF',

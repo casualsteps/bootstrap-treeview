@@ -38,7 +38,7 @@
 		emptyIcon: '',
 		nodeIcon: '',
 		selectedIcon: '',
-		checkedIcon: 'fa-check-square-o',
+		checkedIcon: 'fa fa-check-square-o',
 		uncheckedIcon: 'fa fa-square-o',
 
 		color: undefined, // '#000000',

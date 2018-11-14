@@ -615,7 +615,7 @@
 			}
 
 			if (node.state.expanded && _this.options.multiSelect) {
-				var selection = new Set(node.nodes.map(n => n.state.selected));
+				var selection = new Set(node.nodes.map(function(n) { return n.state.selected }));
 				var allSelected = selection.size == 1 && selection.has(true);
 				if (allSelected) {
 					treeItem.append($(_this.template.selectNone));

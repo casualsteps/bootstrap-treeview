@@ -33,13 +33,13 @@
 
 		levels: 2,
 
-		expandIcon: 'glyphicon glyphicon-plus',
-		collapseIcon: 'glyphicon glyphicon-minus',
-		emptyIcon: 'glyphicon',
+		expandIcon: 'fa fa-plus-square-o',
+		collapseIcon: 'fa fa-minus-square-o',
+		emptyIcon: '',
 		nodeIcon: '',
 		selectedIcon: '',
-		checkedIcon: 'glyphicon glyphicon-check',
-		uncheckedIcon: 'glyphicon glyphicon-unchecked',
+		checkedIcon: 'fa fa-check-square-o',
+		uncheckedIcon: 'fa fa-square-o',
 
 		color: undefined, // '#000000',
 		backColor: undefined, // '#FFFFFF',
@@ -333,6 +333,14 @@
 			this.toggleCheckedState(node, _default.options);
 			this.render();
 		}
+		else if ((classList.indexOf('select-all') !== -1)) {
+			this.selectNode(node.nodes);
+			this.render();
+		}
+		else if ((classList.indexOf('select-none') !== -1)) {
+			this.unselectNode(node.nodes);
+			this.render();
+		}
 		else {
 			
 			if (node.selectable) {
@@ -606,6 +614,16 @@
 				});
 			}
 
+			if (node.state.expanded && _this.options.multiSelect) {
+				var selection = new Set(node.nodes.map(function(n) { return n.state.selected }));
+				var allSelected = selection.size == 1 && selection.has(true);
+				if (allSelected) {
+					treeItem.append($(_this.template.selectNone));
+				} else {
+					treeItem.append($(_this.template.selectAll));
+				}
+			}
+
 			// Add item to the tree
 			_this.$wrapper.append(treeItem);
 
@@ -692,7 +710,9 @@
 		indent: '<span class="indent"></span>',
 		icon: '<span class="icon"></span>',
 		link: '<a href="#" style="color:inherit;"></a>',
-		badge: '<span class="badge"></span>'
+		badge: '<span class="badge"></span>',
+		selectAll: '<a href="#" class="float-right select-all" style="color:inherit;">Select all</a>',
+		selectNone: '<a href="#" class="float-right select-none" style="color:inherit;">Select none</a>'
 	};
 
 	Tree.prototype.css = '.treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}'
